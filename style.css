@@ -73,22 +73,24 @@ body {
 }
 
 .tray-outer-slot {
+    
     width: 100%; 
     height: 75px; 
-    background: #1a1a1b;
+    background: none;
     margin-bottom: 35px; 
     position: relative; 
     overflow: hidden; 
-    border: 1px solid #1a1a1b;
 }
 
 
 .tray-mechanism {
     position: absolute;
-    width: 64%;
+    width: 55%;
     height: 100%; /* Prend toute la hauteur du slot parent */
     background: linear-gradient(180deg, #1a1a1b 0%, #151516 100%);
     top: 0;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     left: 18%;
     z-index: 10;
     transition: transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -106,7 +108,7 @@ body {
 
 /* On s'assure que l'animation de descente est toujours là */
 .tray-mechanism.open {
-    transform: translateY(70px); /* Ajuste à 68px si tu veux voir le haut du tiroir */
+    transform: translateX(-50%) translateY(70px) !important;
 }
 .mash-logo-tray { height: 35px; 
     opacity: 0.5; 
@@ -641,44 +643,6 @@ body {
 }
 
 
-
-.vu-hatch-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px;
-}
-
-/* On ajuste aussi le cadre pour que l'intégration soit propre */
-.vu-hatch-frame {
-    width: 270px; 
-    height: 55px;
-    background: #070707; /* Fond noir profond derrière le cache */
-    border: 2px solid #000; /* Bordure extérieure du cadre */
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-    margin-top: 9px;
-}
-
-#vu-hatch-block {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, #1a1a1b 0%, #d3d3d3 100%); /* Même dégradé que le tiroir */
-    
-    /* COPIE EXACTE DES BORDURES DU TIROIR CD */
-    border: 2px solid #000;      /* Trace les 4 côtés */
-    border-top-color: #333;      /* Petit reflet de relief en haut */
-    box-sizing: border-box;      /* Garde les bordures incluses dans la taille */
-    
-    z-index: 20;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .hatch-logo {
     font-size: 10px;
     color: #444;
@@ -686,24 +650,6 @@ body {
     font-weight: bold;
 }
 
-/* État ouvert : le cache descend de 100% de sa hauteur */
-#vu-hatch-block.hatch-open {
-    transform: translateY(95%);
-}
-
-#vu-hatch-block.hatch-closed {
-    transform: translateY(0);
-}
-
-/* On s'assure que les boutons sont bien centrés derrière */
-.vu-controls-container {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-}
 
 .hatch-texture {
     width: 100%;
@@ -723,12 +669,6 @@ body {
     text-align: center;
 }
 
-.vu-sense-group {
-    display: block;        /* Permet d'appliquer des marges correctement */
-    margin-top: 30px;      /* Ajuste cette valeur pour descendre le mot plus ou moins bas */
-    margin-bottom: -10px;    /* Espace entre le mot et la trappe */
-    transition: all 0.3s;  /* Optionnel : pour un mouvement fluide si tu le modifies */
-}
 
 /* Modification des marges pour s'adapter à la nouvelle position */
 .tone-controls-section {
@@ -791,7 +731,7 @@ body {
 }
 
 .tone-hatch-frame {
-    width: 1430px !important; /* Largeur ajustée pour rester dans le châssis */
+    width: 1460px !important; /* Largeur ajustée pour rester dans le châssis */
     height: 95px;
     background: #0a0a0a;
     border: 2px solid #000;
@@ -810,12 +750,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Couleur fumée : mélange de noir semi-transparent et dégradé */
-    background: linear-gradient(180deg, rgba(26, 26, 27, 0.8) 0%, rgba(21, 21, 22, 0.9) 100%);
-    /* Effet de flou pour le côté "verre fumé" */
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(2px);
-    
+    background: linear-gradient(180deg, #1a1a1b 0%, #151516 100%);
     border: 2px solid #000;
     border-top-color: #333; 
     box-sizing: border-box;
@@ -867,10 +802,7 @@ body {
     opacity: 0.9;
 }
 
-/* Quand la trappe est ouverte, on masque le texte */
-.hatch-open .hatch-label {
-    transition: all 0.6s ease-in-out;
-}
+
 
 #default-tone-btn {
     width: 60px !important;  /* Largeur personnalisée (ex: 60px au lieu de 90px) */
