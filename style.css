@@ -804,13 +804,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #1a1a1b 0%, #151516 100%);
+    /* Couleur fumée : mélange de noir semi-transparent et dégradé */
+    background: linear-gradient(180deg, rgba(26, 26, 27, 0.8) 0%, rgba(21, 21, 22, 0.9) 100%);
+    /* Effet de flou pour le côté "verre fumé" */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
     border: 2px solid #000;
-    border-top-color: #333; /* Reflet identique au tiroir CD */
+    border-top-color: #333; 
     box-sizing: border-box;
     z-index: 20;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 #tone-hatch-block.hatch-open {
     transform: translateY(90px); /* Glisse vers le bas */
