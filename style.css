@@ -1,5 +1,5 @@
 :root {
-    --bg-black: #797979; /* backgound par defaut #a5a5a5*/
+    --bg-black: #a0a0a0; /* backgound par defaut #a5a5a5*/
     --deck-gray: #1a1a1b;
     --vfd-blue: #40e0ff;
     --vfd-green: #008000;
@@ -41,7 +41,7 @@ body {
     padding: 25px 120px 120px 120px; 
     border-top: 0px solid #000000;
     border-radius: 10px; 
-    box-shadow: 0 200px 200px rgb(49, 49, 49);
+    box-shadow: 0 200px 200px var(--shadow-color, rgb(109, 109, 109));
     position: relative;
     z-index: 1;
     border-left: var(--border-color) var(--largeur) solid;

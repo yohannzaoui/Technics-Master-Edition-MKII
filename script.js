@@ -601,3 +601,23 @@ function resetToneDefault() {
     // Affichage VFD temporaire
     showToneDisplay("DEFAULT", 0);
 }
+
+function changeBackgroundColor(color) {
+    // Applique la couleur au fond de la page
+    document.body.style.background = color;
+    
+    // Si vous avez une image de fond (métal brossé), on la retire pour voir la couleur
+    document.body.style.backgroundImage = 'none';
+
+    // Optionnel : Sauvegarder la préférence (comme demandé dans vos instructions)
+    localStorage.setItem('user-bg-color', color);
+}
+
+// Au chargement de la page, restaurer la couleur si elle existe
+window.addEventListener('load', () => {
+    const savedColor = localStorage.getItem('user-bg-color');
+    if (savedColor) {
+        changeBackgroundColor(savedColor);
+        document.getElementById('bg-color-picker').value = savedColor;
+    }
+});

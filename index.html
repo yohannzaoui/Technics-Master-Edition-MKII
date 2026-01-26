@@ -164,7 +164,20 @@
                                         </div>
                                         <span class="vertical-separator"></span>
                                         <div class="btn-group">
-                                        <button class="btn btn-tone" onclick="event.stopPropagation(); document.getElementById('vfd-color-trigger').click();">VFD COLOR</button>
+                                        <button class="btn btn-tone" onclick="event.stopPropagation(); document.getElementById('vfd-color-trigger').click();">VFD COLOR</button>                  
+                                        <button class="btn btn-tone" onclick="event.stopPropagation();"style="position: relative;">BACKGROUND<input type="color" oninput="document.body.style.background = this.value; document.body.style.backgroundImage = 'none';" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: none;">
+                                        </button>
+
+
+                                        <button class="btn btn-tone" onclick="event.stopPropagation();"style="position: relative;">SHADOW<input type="color" value="#6d6d6d"oninput="document.documentElement.style.setProperty('--shadow-color', this.value)" 
+                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: none;">
+                                        </button>
+
+
+
+
+
                                         </div>
                                             
                                     
