@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technics Master Edition | HiFi</title>
+    <meta name="author" content="Yohann Zaoui">
+	<meta name="keywords" content="Technics, Hi-Res Audio, Audio Player, Mini, HiFi, Touchscreen, Music Player, Web App, flac, mp3, music">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+</head>
+<body>
+
+    <div id="art-modal" onclick="this.style.display='none'">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="art-image" src="img/favicon.png" alt="Album Art">
+            <div id="art-info">Technics - HiRes - Player</div>
+        </div>
+    </div>
+
+    <div id="playlist-modal" onclick="this.style.display='none'">
+        <div class="modal-content list-content" onclick="event.stopPropagation()">
+            <h3 style="color:var(--vfd-blue); margin-top:0; letter-spacing:2px;">TRACK LIST</h3>
+            <div id="track-list-container"></div>
+            <button class="btn" style="margin-top:20px; height:35px; width:100px; margin-left:auto; margin-right:auto;" onclick="document.getElementById('playlist-modal').style.display='none'">CLOSE</button>
+        </div>
+    </div>
+
+    <div class="deck-container">
+        <img src="img/HR_logo.png" class="hr-logo-bottom" alt="High Resolution">
+
+   
+
+ 	<header class="brand-header">
+		<a href="#" id="vfd-color-trigger" class="invisible-link" title="Change Display Color">
+                <img src="img/Technics_logo.png" class="main-logo" alt="Technics">
+            	</a>		
+                <div class="model-name">Master Edition</div> 
+        </header>
+
+
+
+        <div class="tray-outer-slot">
+            <div id="tray-front" class="tray-mechanism">
+                <img src="img/mash_logo_t.png" alt="MASH Logo" class="mash-logo-tray">
+            </div>
+            <div style="position:absolute; width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                <input type="file" id="file-input" multiple style="display:none">
+                <label for="file-input" style="color:#a0a0a0; cursor:pointer; font-weight:bold; letter-spacing:3px;">- SELECT TRACKS -</label>
+            </div>
+        </div>
+
+        <div class="main-interface">
+            <div class="power-section">
+                <span class="upper-label">POWER</span>
+                <button class="btn" id="power-reset-btn"></button>
+            </div>
+
+            <div class="display-and-controls">
+                <section class="display-panel">
+                    <div class="vfd-main-row">
+                        <div class="vfd-col-track">
+                            <span class="label-vfd clickable" id="track-label" onclick="openArt()">Track</span>
+                            <div class="digital-counter">
+                                <span id="t-d1" class="digit">0</span><span id="t-d2" class="digit">0</span>
+                                <span id="file-format-display" class="file-format" onclick="openArt()">---</span>
+                            </div>
+                        </div>
+
+                        <div class="vfd-col-indicators">
+                            <div id="vfd-random" class="vfd-indicator">Random</div>
+                            <div id="vfd-repeat-1" class="vfd-indicator">Repeat 1</div>
+                            <div id="vfd-repeat-all" class="vfd-indicator">Repeat All</div>
+                            <div id="vfd-ab" class="vfd-indicator">A-B</div>
+                            <div id="vfd-ab-lock" class="vfd-indicator">A-B LOCK</div>
+                        </div>
+
+                        <div class="vfd-col-time">
+                            <span class="label-vfd" id="time-label">Min : Sec</span>
+                            <div class="digital-counter" id="main-time-display">
+                                <span id="m-d1" class="digit">0</span><span id="m-d2" class="digit">0</span>
+                                <span class="time-separator" id="time-sep">:</span>
+                                <span id="s-d1" class="digit">0</span><span id="s-d2" class="digit">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="track-grid" onclick="openPlaylist()" style="cursor:pointer">
+                        <div id="grid-numbers-wrapper" style="display: flex; gap: 10px; align-items: center;"></div>
+                        <div id="over-arrow" class="arrow-indicator">▶</div>
+                    </div>
+
+                    <div class="vu-meters" id="vu-meters-container">
+                        <div class="vu-row"><span class="vu-label on" id="lbl-L">L</span><div class="meter-container" id="meter-L"></div></div>
+                        <div class="vu-row"><span class="vu-label on" id="lbl-R">R</span><div class="meter-container" id="meter-R"></div></div>
+                    </div>
+                </section>
+
+                <div class="numeric-grid">
+                    <button class="btn" onclick="handleNumKey(1)">1</button>
+                    <button class="btn" onclick="handleNumKey(2)">2</button>
+                    <button class="btn" onclick="handleNumKey(3)">3</button>
+                    <button class="btn" onclick="handleNumKey(4)">4</button>
+                    <button class="btn" onclick="handleNumKey(5)">5</button>
+                    <button class="btn" onclick="handleNumKey(6)">6</button>
+                    <button class="btn" onclick="handleNumKey(7)">7</button>
+                    <button class="btn" onclick="handleNumKey(8)">8</button>
+                    <button class="btn" onclick="handleNumKey(9)">9</button>
+                    <button class="btn" onclick="handleNumKey(0)">0</button>
+                </div>
+       <div class="tone-controls-section">
+    <div class="tone-group-wrapper">
+        <div class="tone-hatch-frame" onclick="toggleToneHatch()">
+            <div id="tone-hatch-block" class="hatch-closed">
+                <div class="hatch-texture"></div>
+                <span class="hatch-label">TONE CONTROL</span>
+            </div>
+            <div class="tone-controls-row">
+                <div class="tone-group">
+                    <span class="label-tiny">BASS</span>
+                    <div class="btn-group">
+                        <button class="btn btn-tone" 
+                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
+                            onmouseleave="startToneTimeout()" 
+                            onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
+                        <button class="btn btn-tone" 
+                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
+                            onmouseleave="startToneTimeout()" 
+                            onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
+                    </div>
+                </div>
+			<div class="tone-group">
+			<button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()" style="margin: 0 5px;">RESET</button>
+		</div>
+                <div class="tone-group">
+                    <span class="label-tiny">TREBLE</span>
+                    <div class="btn-group">
+                        <button class="btn btn-tone" 
+                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
+                            onmouseleave="startToneTimeout()" 
+                            onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
+                        <button class="btn btn-tone" 
+                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
+                            onmouseleave="startToneTimeout()" 
+                            onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <div class="transport-grid">
+                    <div class="eject-section">
+                        <span class="upper-label">OPEN/CLOSE</span>
+                        <button class="btn" id="eject-btn"><i class="fas fa-eject"></i></button>
+                    </div>
+                    <div class="eject-section">
+                        <span class="upper-label">PREV</span>
+                    <button class="btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
+                        </div>
+                        <div class="eject-section">
+                        <span class="upper-label">PLAY/PAUSE</span>
+                    <button class="btn" id="play-btn">
+    <i class="fas fa-play"></i><span style="margin: 0 2px;">/</span><i class="fas fa-pause"></i>
+</button>
+                            </div>
+                        <div class="eject-section">
+                        <span class="upper-label">NEXT</span>
+                    <button class="btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
+                    </div>
+                    <div class="eject-section">
+                        <span class="upper-label">STOP</span>
+                    <button class="btn" id="stop-btn"><i class="fas fa-stop"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-right-stack">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <button class="btn" id="rew-btn">◀◀</button>
+                    <button class="btn" id="fwd-btn">▶▶</button>
+                    <button class="btn" id="minus-10-btn">- 10s</button>
+                    <button class="btn" id="plus-10-btn">+ 10s</button>
+                    <button class="btn" id="random-btn">Random</button>
+                    <button class="btn" id="repeat-btn">Repeat</button>
+                    <button class="btn" id="ab-btn">A - B</button>
+                    <button class="btn" id="peak-btn">Peak</button>
+                    <button class="btn" id="time-btn">Time Mode</button>
+                    <button class="btn" id="vu-btn">VU</button>
+                </div>
+                
+                
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 50px;">
+                    <span class="volume-label">VOLUME</span>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn" id="vol-down-btn">VOL -</button>
+                        <button class="btn" id="mute-btn">MUTE</button>
+                        <button class="btn" id="vol-up-btn">VOL +</button>
+                    </div>
+                    <div class="vu-sense-group">
+    
+    
+    <div class="vu-hatch-frame" onclick="toggleVUHatch()">
+        <div id="vu-hatch-block" class="hatch-closed">
+            <div class="hatch-texture"></div>
+            <span class="hatch-label">VU SENSE</span>
+        </div>
+        
+        <div class="vu-controls-container">
+            <button class="btn" id="vu-down-btn" 
+                onmouseenter="showVUSense()" 
+                onmouseleave="startVUTimeout()" 
+                onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
+            <button class="btn" id="vu-up-btn" 
+                onmouseenter="showVUSense()" 
+                onmouseleave="startVUTimeout()" 
+                onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
