@@ -147,14 +147,8 @@
                                 <div class="tone-group">
                                     <span class="label-tiny">BASS</span>
                                     <div class="btn-group">
-                                        <button class="btn btn-tone" 
-                                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
-                                            onmouseleave="startToneTimeout()" 
-                                            onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
-                                        <button class="btn btn-tone" 
-                                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
-                                            onmouseleave="startToneTimeout()" 
-                                            onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
+                                        <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
+                                        <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
                                     </div>
                                 </div>
                                 <div class="tone-group">
@@ -163,14 +157,15 @@
                                 <div class="tone-group">
                                     <span class="label-tiny">TREBLE</span>
                                     <div class="btn-group">
-                                        <button class="btn btn-tone" 
-                                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
-                                            onmouseleave="startToneTimeout()" 
-                                            onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
-                                        <button class="btn btn-tone" 
-                                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
-                                            onmouseleave="startToneTimeout()" 
-                                            onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
+                                        <button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
+                                        <button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
+                                    </div>
+                                </div>
+                                <div class="tone-group" style="margin-left: 10px; border-left: 1px solid #333; padding-left: 10px;">
+                                    <span class="label-tiny">VU SENSE</span>
+                                    <div class="btn-group">
+                                        <button class="btn btn-tone" id="vu-down-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
+                                        <button class="btn btn-tone" id="vu-up-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
                                     </div>
                                 </div>
                             </div>
@@ -200,25 +195,7 @@
                         <button class="btn" id="mute-btn">MUTE</button>
                         <button class="btn" id="vol-up-btn">VOL +</button>
                     </div>
-                    <div class="vu-sense-group">
-                        <div class="vu-hatch-frame" onclick="toggleVUHatch()">
-                            <div id="vu-hatch-block" class="hatch-closed">
-                                <div class="hatch-texture"></div>
-                                <span class="hatch-label">VU SENSE</span>
-                            </div>
-                            <div class="vu-controls-container">
-                                <button class="btn" id="vu-down-btn" 
-                                    onmouseenter="showVUSense()" 
-                                    onmouseleave="startVUTimeout()" 
-                                    onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
-                                <button class="btn" id="vu-up-btn" 
-                                    onmouseenter="showVUSense()" 
-                                    onmouseleave="startVUTimeout()" 
-                                    onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
-                            </div>
-                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
