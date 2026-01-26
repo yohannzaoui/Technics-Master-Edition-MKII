@@ -126,7 +126,7 @@ body {
     display: grid; 
     grid-template-columns: repeat(5, 1fr); 
     gap: 15px; 
-    margin-top: 55px; 
+    margin-top: 5px;    /* Réduit pour être plus proche de l'afficheur */
     width: 100%; 
     align-items: end; 
 }
@@ -726,18 +726,14 @@ body {
     transition: all 0.3s;  /* Optionnel : pour un mouvement fluide si tu le modifies */
 }
 
+/* Modification des marges pour s'adapter à la nouvelle position */
 .tone-controls-section {
     width: 100%;
     display: flex;
-    justify-content: center; /* Centre horizontalement */
+    justify-content: center;
     align-items: center;
-
-    /* CONTRÔLE INDÉPENDANT DES MARGES */
-    margin-top: 10px;    /* Ajuste l'espace avec ce qui est AU-DESSUS */
-    margin-bottom: -60px; /* Ajuste l'espace avec la rangée EJECT en DESSOUS */
-    
-    /* Optionnel : si tu veux voir la zone pendant que tu règles */
-    /* border: 1px dashed rgba(255,255,255,0.1); */
+    margin-top: 35px;    /* Augmenté pour l'espace sous la grille numérique */
+    margin-bottom: -10px;  /* Remis à zéro car c'est maintenant le dernier élément */
 }
 
 /* Aligne les deux groupes Bass et Treble sur une ligne */
