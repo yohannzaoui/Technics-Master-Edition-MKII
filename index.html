@@ -145,7 +145,6 @@
                             </div>
                             <div class="tone-controls-row">
                                 <div class="tone-group">
-                                    <span class="label-tiny">BASS</span>
                                     <div class="btn-group">
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
@@ -155,14 +154,12 @@
                                     <button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()" style="margin: 0 5px;">RESET</button>
                                 </div>
                                 <div class="tone-group">
-                                    <span class="label-tiny">TREBLE</span>
                                     <div class="btn-group">
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
                                     </div>
                                 </div>
                                 <div class="tone-group">
-                                    <span class="label-tiny">VU SENSE</span>
                                     <div class="btn-group">
                                         <button class="btn btn-tone" id="vu-down-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
                                         <button class="btn btn-tone" id="vu-up-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
