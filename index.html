@@ -35,16 +35,12 @@
     <div class="deck-container">
         <img src="img/HR_logo.png" class="hr-logo-bottom" alt="High Resolution">
 
-   
-
  	<header class="brand-header">
 		<a href="#" id="vfd-color-trigger" class="invisible-link" title="Change Display Color">
                 <img src="img/Technics_logo.png" class="main-logo" alt="Technics">
             	</a>		
                 <div class="model-name">Master Edition</div> 
         </header>
-
-
 
         <div class="tray-outer-slot">
             <div id="tray-front" class="tray-mechanism">
@@ -114,47 +110,6 @@
                     <button class="btn" onclick="handleNumKey(9)">9</button>
                     <button class="btn" onclick="handleNumKey(0)">0</button>
                 </div>
-       <div class="tone-controls-section">
-    <div class="tone-group-wrapper">
-        <div class="tone-hatch-frame" onclick="toggleToneHatch()">
-            <div id="tone-hatch-block" class="hatch-closed">
-                <div class="hatch-texture"></div>
-                <span class="hatch-label">TONE CONTROL</span>
-            </div>
-            <div class="tone-controls-row">
-                <div class="tone-group">
-                    <span class="label-tiny">BASS</span>
-                    <div class="btn-group">
-                        <button class="btn btn-tone" 
-                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
-                            onmouseleave="startToneTimeout()" 
-                            onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
-                        <button class="btn btn-tone" 
-                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
-                            onmouseleave="startToneTimeout()" 
-                            onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
-                    </div>
-                </div>
-			<div class="tone-group">
-			<button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()" style="margin: 0 5px;">RESET</button>
-		</div>
-                <div class="tone-group">
-                    <span class="label-tiny">TREBLE</span>
-                    <div class="btn-group">
-                        <button class="btn btn-tone" 
-                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
-                            onmouseleave="startToneTimeout()" 
-                            onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
-                        <button class="btn btn-tone" 
-                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
-                            onmouseleave="startToneTimeout()" 
-                            onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
                 <div class="transport-grid">
                     <div class="eject-section">
@@ -163,21 +118,63 @@
                     </div>
                     <div class="eject-section">
                         <span class="upper-label">PREV</span>
-                    <button class="btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
-                        </div>
-                        <div class="eject-section">
+                        <button class="btn" id="prev-btn"><i class="fas fa-backward-step"></i></button>
+                    </div>
+                    <div class="eject-section">
                         <span class="upper-label">PLAY/PAUSE</span>
-                    <button class="btn" id="play-btn">
-    <i class="fas fa-play"></i><span style="margin: 0 2px;">/</span><i class="fas fa-pause"></i>
-</button>
-                            </div>
-                        <div class="eject-section">
+                        <button class="btn" id="play-btn">
+                            <i class="fas fa-play"></i><span style="margin: 0 2px;">/</span><i class="fas fa-pause"></i>
+                        </button>
+                    </div>
+                    <div class="eject-section">
                         <span class="upper-label">NEXT</span>
-                    <button class="btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
+                        <button class="btn" id="next-btn"><i class="fas fa-forward-step"></i></button>
                     </div>
                     <div class="eject-section">
                         <span class="upper-label">STOP</span>
-                    <button class="btn" id="stop-btn"><i class="fas fa-stop"></i></button>
+                        <button class="btn" id="stop-btn"><i class="fas fa-stop"></i></button>
+                    </div>
+                </div>
+
+                <div class="tone-controls-section">
+                    <div class="tone-group-wrapper">
+                        <div class="tone-hatch-frame" onclick="toggleToneHatch()">
+                            <div id="tone-hatch-block" class="hatch-closed">
+                                <div class="hatch-texture"></div>
+                                <span class="hatch-label">TONE CONTROL</span>
+                            </div>
+                            <div class="tone-controls-row">
+                                <div class="tone-group">
+                                    <span class="label-tiny">BASS</span>
+                                    <div class="btn-group">
+                                        <button class="btn btn-tone" 
+                                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
+                                            onmouseleave="startToneTimeout()" 
+                                            onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
+                                        <button class="btn btn-tone" 
+                                            onmouseenter="showToneDisplay('BASS', bassLevel)" 
+                                            onmouseleave="startToneTimeout()" 
+                                            onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
+                                    </div>
+                                </div>
+                                <div class="tone-group">
+                                    <button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()" style="margin: 0 5px;">RESET</button>
+                                </div>
+                                <div class="tone-group">
+                                    <span class="label-tiny">TREBLE</span>
+                                    <div class="btn-group">
+                                        <button class="btn btn-tone" 
+                                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
+                                            onmouseleave="startToneTimeout()" 
+                                            onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
+                                        <button class="btn btn-tone" 
+                                            onmouseenter="showToneDisplay('TREBLE', trebleLevel)" 
+                                            onmouseleave="startToneTimeout()" 
+                                            onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,7 +193,6 @@
                     <button class="btn" id="vu-btn">VU</button>
                 </div>
                 
-                
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 50px;">
                     <span class="volume-label">VOLUME</span>
                     <div style="display: flex; gap: 10px;">
@@ -205,26 +201,23 @@
                         <button class="btn" id="vol-up-btn">VOL +</button>
                     </div>
                     <div class="vu-sense-group">
-    
-    
-    <div class="vu-hatch-frame" onclick="toggleVUHatch()">
-        <div id="vu-hatch-block" class="hatch-closed">
-            <div class="hatch-texture"></div>
-            <span class="hatch-label">VU SENSE</span>
-        </div>
-        
-        <div class="vu-controls-container">
-            <button class="btn" id="vu-down-btn" 
-                onmouseenter="showVUSense()" 
-                onmouseleave="startVUTimeout()" 
-                onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
-            <button class="btn" id="vu-up-btn" 
-                onmouseenter="showVUSense()" 
-                onmouseleave="startVUTimeout()" 
-                onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
-        </div>
-    </div>
-</div>
+                        <div class="vu-hatch-frame" onclick="toggleVUHatch()">
+                            <div id="vu-hatch-block" class="hatch-closed">
+                                <div class="hatch-texture"></div>
+                                <span class="hatch-label">VU SENSE</span>
+                            </div>
+                            <div class="vu-controls-container">
+                                <button class="btn" id="vu-down-btn" 
+                                    onmouseenter="showVUSense()" 
+                                    onmouseleave="startVUTimeout()" 
+                                    onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
+                                <button class="btn" id="vu-up-btn" 
+                                    onmouseenter="showVUSense()" 
+                                    onmouseleave="startVUTimeout()" 
+                                    onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
