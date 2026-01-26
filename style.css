@@ -1,5 +1,5 @@
 :root {
-    --bg-black: #a5a5a5; /* backgound par defaut #a5a5a5*/
+    --bg-black: #797979; /* backgound par defaut #a5a5a5*/
     --deck-gray: #1a1a1b;
     --vfd-blue: #40e0ff;
     --vfd-green: #008000;
@@ -14,6 +14,7 @@
     --text-gold: #7a6a0c;
     --text-brown: #9F7E69;
     --text-white: #ffffff;
+    --border-color : #3b3b3b; --largeur: 15px;
     --ui-font: 'Segoe UI', Tahoma, sans-serif;
     --digital-font: 'DS-Digital', sans-serif;
     --brushed-metal: conic-gradient(
@@ -38,11 +39,13 @@ body {
     width: 1600px; 
     background-color: var(--deck-gray);
     padding: 25px 120px 120px 120px; 
-    border-top: 1px solid #cfcfcf;
+    border-top: 0px solid #000000;
     border-radius: 10px; 
     box-shadow: 0 200px 200px rgb(49, 49, 49);
     position: relative;
     z-index: 1;
+    border-left: var(--border-color) var(--largeur) solid;
+    border-right: var(--border-color) var(--largeur) solid;
 }
 
 .brand-header {
@@ -342,6 +345,7 @@ body {
     height: 40px; 
     opacity: 0.7; 
     pointer-events: none; 
+    margin-bottom: -15px;
 }
 
 /* Modals */
@@ -529,15 +533,15 @@ body {
 }
 
 #vol-down-btn, #vol-up-btn {
-    width: 100px !important;  /* Force la largeur */
-    min-width: 0 !important; /* Supprime toute sécurité qui empêcherait de rétrécir */
+    width: 130px !important;  /* Force la largeur */
+    height: 55px !important; /* Hauteur personnalisée */
     flex: none !important;   /* Empêche le bouton de s'étirer tout seul */
     height: 70px;
 }
 
 #mute-btn {
     width: 60px !important;
-    min-width: 0 !important;
+    height: 55px !important;
     flex: none !important;
     height: 70px;
 }
@@ -545,14 +549,14 @@ body {
 /* On cible le conteneur des boutons de volume */
 .controls-right-stack div[style*="display: flex"],
 .volume-controls-container {
-    margin-top: 50px; /* Augmente ce chiffre pour descendre plus bas */
+    margin-top: 30px; /* Augmente ce chiffre pour descendre plus bas */
 }
 
 
 /* Remplace .volume-label par la classe que tu utilises pour le texte "VOLUME" */
 .volume-label {
     display: block; /* S'assure que l'élément peut être déplacé */
-    transform: translateY(50px); /* Descend le mot de 15px vers le bas */
+    transform: translateY(30px); /* Descend le mot de 15px vers le bas */
 }
 
 .label-tiny {
@@ -579,7 +583,7 @@ body {
 /* On force la taille identique au volume */
 #vu-down-btn, #vu-up-btn {
     width: 90px !important;
-    height: 40px !important;
+    height: 45px !important;
     min-width: 0 !important;
     flex: none !important;
     margin-bottom: 20px;
@@ -664,7 +668,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #1a1a1b 0%, #151516 100%); /* Même dégradé que le tiroir */
+    background: linear-gradient(180deg, #1a1a1b 0%, #d3d3d3 100%); /* Même dégradé que le tiroir */
     
     /* COPIE EXACTE DES BORDURES DU TIROIR CD */
     border: 2px solid #000;      /* Trace les 4 côtés */
@@ -736,18 +740,20 @@ body {
     margin-bottom: -10px;  /* Remis à zéro car c'est maintenant le dernier élément */
 }
 
-/* Aligne les deux groupes Bass et Treble sur une ligne */
 .tone-controls-row {
     display: flex;
-    gap: 60px; /* Espace généreux entre Bass et Treble pour la clarté */
+    justify-content: flex-start; /* Aligne tout à gauche */
+    align-items: center;
+    height: 100%;
+    padding-left: 30px; /* C'est cette valeur qui gère maintenant la position à gauche */
+    gap: 15px; 
 }
 
-/* Centre le texte au-dessus des boutons */
 .tone-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px; /* Espace entre le mot et les boutons */
+    align-items: flex-start; /* Remplacez 'center' par 'flex-start' si vous voulez tout coller à gauche */
+    gap: 1px;
+    margin-bottom: -15px;
 }
 
 .tone-group-wrapper .upper-label {
@@ -807,8 +813,8 @@ body {
     /* Couleur fumée : mélange de noir semi-transparent et dégradé */
     background: linear-gradient(180deg, rgba(26, 26, 27, 0.8) 0%, rgba(21, 21, 22, 0.9) 100%);
     /* Effet de flou pour le côté "verre fumé" */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(2px);
     
     border: 2px solid #000;
     border-top-color: #333; 
@@ -826,7 +832,7 @@ body {
 /* On ajuste l'alignement des boutons derrière la trappe */
 .tone-controls-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: 100%;
     padding: 0 10px;
@@ -866,10 +872,13 @@ body {
     transition: all 0.6s ease-in-out;
 }
 
-.default-tone-btn {
-    min-width: 50px;
-    font-size: 8px;
-    color: var(--text-silver);
+#default-tone-btn {
+    width: 60px !important;  /* Largeur personnalisée (ex: 60px au lieu de 90px) */
+    height: 45px !important; /* Hauteur personnalisée (ex: 35px au lieu de 45px) */
+    font-size: 11px !important; /* Taille du texte légèrement réduite */
+   
+    flex: none !important;
+    margin: 0 1px !important; /* Espace autour du bouton */
 }
 
 /* Effet au survol ou quand le bouton est actif */
@@ -897,3 +906,15 @@ body {
     color: var(--text-white); 
     text-shadow: 0 0 5px var(--vfd-glow);
 }
+
+.vertical-separator {
+    display: inline-block;
+    width: 2px;
+    height: 30px;
+    background-color: var(--text-silver);
+    margin: 0 20px;
+    align-self: center;
+    transform: translateY(-10px);
+    opacity: 0.5;
+}
+

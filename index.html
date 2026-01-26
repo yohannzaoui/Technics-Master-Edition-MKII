@@ -33,7 +33,7 @@
     </div>
 
     <div class="deck-container">
-        
+        <img src="img/HR_logo.png" class="hr-logo-bottom" alt="High Resolution">
 
  	<header class="brand-header">
 		<a href="#" id="vfd-color-trigger" class="invisible-link" title="Change Display Color">
@@ -148,16 +148,27 @@
                                     <div class="btn-group">
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(-1)">Bass -</button>
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('BASS', bassLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustBass(1)">Bass +</button>
-										<button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()" style="margin: 0 5px;">RESET</button>
+										<button class="btn btn-tone" id="default-tone-btn" onclick="event.stopPropagation(); resetToneDefault()"style="margin-left: 2px; margin-right: 2px;">RESET</button>
 										<button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(-1)">Treble -</button>
                                         <button class="btn btn-tone" onmouseenter="showToneDisplay('TREBLE', trebleLevel)" onmouseleave="startToneTimeout()" onclick="event.stopPropagation(); adjustTreble(1)">Treble +</button>
-                                    </div>
-                                </div>
-                                <div class="tone-group">
-                                    <div class="btn-group">
+                                        </div>
+                                        <span class="vertical-separator"></span>
+                                        <div class="btn-group">
                                         <button class="btn btn-tone" id="vu-down-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(-0.2)">VU -</button>
                                         <button class="btn btn-tone" id="vu-up-btn" onmouseenter="showVUSense()" onmouseleave="startVUTimeout()" onclick="event.stopPropagation(); adjustVUSense(0.2)">VU +</button>
-                                    </div>
+                                        </div>
+                                        <span class="vertical-separator"></span>
+                                        <div class="btn-group">
+                                        <button class="btn btn-tone" onclick="event.stopPropagation(); openPlaylist()">TRACK LIST</button>
+                                        <button class="btn btn-tone" onclick="event.stopPropagation(); openArt()">COVER</button>
+                                        </div>
+                                        <span class="vertical-separator"></span>
+                                        <div class="btn-group">
+                                        <button class="btn btn-tone" onclick="event.stopPropagation(); document.getElementById('vfd-color-trigger').click();">VFD COLOR</button>
+                                        </div>
+                                            
+                                    
+     
                                 </div>
                             </div>
                         </div>
