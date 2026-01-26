@@ -37,7 +37,7 @@ body {
 .deck-container {
     width: 1600px; 
     background-color: var(--deck-gray);
-    padding: 25px 120px 60px 120px; 
+    padding: 25px 120px 120px 120px; 
     border-top: 1px solid #cfcfcf;
     border-radius: 4px; 
     box-shadow: 0 200px 200px rgb(49, 49, 49);
@@ -786,12 +786,12 @@ body {
 
 .tone-hatch-frame {
     width: 1430px !important; /* Largeur ajustée pour rester dans le châssis */
-    height: 65px;
+    height: 95px;
     background: #0a0a0a;
     border: 2px solid #000;
     position: absolute; 
     left: 0px; /* Aligne le début de la trappe sur le bouton Eject */
-    bottom: -50px; 
+    bottom: -100px; 
     overflow: hidden;
     cursor: pointer;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
@@ -813,7 +813,7 @@ body {
 }
 
 #tone-hatch-block.hatch-open {
-    transform: translateY(62px); /* Glisse vers le bas */
+    transform: translateY(90px); /* Glisse vers le bas */
 }
 
 /* On ajuste l'alignement des boutons derrière la trappe */
