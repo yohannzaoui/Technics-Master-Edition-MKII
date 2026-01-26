@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Technics Master Edition';
+const CACHE_NAME = 'Technics Master Edition MKII';
 
 const assetsToCache = [
     './',
