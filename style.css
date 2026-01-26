@@ -39,7 +39,7 @@ body {
     background-color: var(--deck-gray);
     padding: 25px 120px 120px 120px; 
     border-top: 1px solid #cfcfcf;
-    border-radius: 4px; 
+    border-radius: 10px; 
     box-shadow: 0 200px 200px rgb(49, 49, 49);
     position: relative;
     z-index: 1;
