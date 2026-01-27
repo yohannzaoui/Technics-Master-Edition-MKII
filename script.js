@@ -15,7 +15,7 @@ let bassLevel = 0;
 let trebleLevel = 0;
 let userPaused = false;
 let isABLocked = false;
-const vfdColors = ['#40e0ff','#0b335e','#FFF703','#ffffff','#a0a0a0','#a68e72','#50ff7a','#404f45'];
+const vfdColors = ['#40e0ff','#ffffff','#a0a0a0','#a68e72','#50ff7a'];
 
 // CORRECTION 1 : Variable pour empêcher la double connexion audio
 let isAudioConnected = false;
@@ -172,7 +172,15 @@ document.getElementById('peak-btn').onclick = async () => {
     const simulatedVal = Math.floor((maxVal / 255) * 40);
     ['meter-L', 'meter-R'].forEach(id => {
         const el = document.getElementById(id);
-        for (let i = 0; i < simulatedVal; i++) el.children[i].className = 'meter-segment' + (i > 34 ? ' on-red' : ' on-blue');
+        for (let i = 0; i < simulatedVal; i++) {
+            if (i >= 30) {
+                el.children[i].className = 'meter-segment on-red';
+            } else if (i >= 20) {
+                el.children[i].className = 'meter-segment on-orange';
+            } else {
+                el.children[i].className = 'meter-segment on-blue';
+            }
+        }
     });
     setTimeout(() => { timeLabel.innerText = originalLabel; isPeakSearching = false; updateTimeDisplay(); }, 2000);
 };
@@ -479,7 +487,17 @@ function renderVU() {
         let rawVal = dataArray[idx + 2] * vuMultiplier; 
         const val = Math.floor((rawVal / 255) * 40);
         for (let i = 0; i < 40; i++) {
-            el.children[i].className = 'meter-segment' + (i < val ? (i > 34 ? ' on-red' : ' on-blue') : '');
+            if (i < val) {
+                if (i >= 30) {
+                    el.children[i].className = 'meter-segment on-red';
+                } else if (i >= 20) {
+                    el.children[i].className = 'meter-segment on-orange';
+                } else {
+                    el.children[i].className = 'meter-segment on-blue';
+                }
+            } else {
+                el.children[i].className = 'meter-segment';
+            }
         }
     });
 }
