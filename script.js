@@ -8,7 +8,7 @@ let inputBuffer = "", inputTimeout = null, volDisplayTimeout = null;
 let audioCtx, analyzer, dataArray, searchInterval = null;
 let preMuteVolume = 0.02;
 let isMuted = false;
-let volRepeatInterval = 2;
+let volRepeatInterval = null;
 let vuMultiplier = 1.0;
 let bassFilter, trebleFilter;
 let bassLevel = 0;   
