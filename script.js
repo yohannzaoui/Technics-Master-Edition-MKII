@@ -8,7 +8,7 @@ let inputBuffer = "", inputTimeout = null, volDisplayTimeout = null;
 let audioCtx, analyzer, dataArray, searchInterval = null;
 let preMuteVolume = 0.02;
 let isMuted = false;
-let volRepeatInterval = null;
+let volRepeatInterval = 2;
 let vuMultiplier = 1.0;
 let bassFilter, trebleFilter;
 let bassLevel = 0;   
@@ -282,8 +282,8 @@ function updateMediaSession() {
         const currentFile = playlist[currentIndex];
         navigator.mediaSession.metadata = new MediaMetadata({
             title: currentFile.name.replace(/\.[^/.]+$/, ""),
-            artist: "Technics SL-PS740A",
-            album: "Compact Disc Digital Audio",
+            artist: "Technics Master Edition MKII",
+            album: "no album",
             artwork: [{ src: currentArt, sizes: '512x512', type: 'image/png' }]
         });
     }
