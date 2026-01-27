@@ -364,6 +364,11 @@ body {
     box-shadow: 0 0 5px var(--vfd-blue); 
 }
 
+.meter-segment.on-orange { 
+    background: #ff8800; 
+    box-shadow: 0 0 5px #ff8800; 
+}
+
 .meter-segment.on-red { 
     background: var(--vfd-red); 
     box-shadow: 0 0 5px var(--vfd-red); 
@@ -419,7 +424,8 @@ body {
     align-items: center;
     margin-top: 25px;
     margin-bottom: 0px;
-    padding: 0 30px;
+    padding: 0 30px;  /* Augmentez cette valeur pour réduire la largeur de la trappe */
+                       /* Ex: 50px = trappe plus étroite, 10px = trappe plus large */
     box-sizing: border-box;
 }
 
@@ -818,6 +824,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;  /* Permet à la trappe de prendre toute la largeur disponible */
 }
 
 .display-and-controls {
