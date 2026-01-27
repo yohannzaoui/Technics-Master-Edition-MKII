@@ -47,7 +47,19 @@ body {
     z-index: 1;
     border-left: var(--border-color) var(--largeur) solid;
     border-right: var(--border-color) var(--largeur) solid;
+
+	border-image-source: linear-gradient(
+        to bottom, 
+        #8c6d35 0%,    /* Or sombre en haut */
+        #BD9448 25%,   /* Votre couleur de base */
+        #f7e2b4 50%,   /* Éclat brillant (point de lumière) */
+        #BD9448 75%,   /* Retour à la couleur de base */
+        #8c6d35 100%   /* Or sombre en bas pour le relief */
+    );
+    border-image-slice: 1; /* Obligatoire pour que le dégradé s'affiche */
+
 }
+
 
 .brand-header {
     display: flex; 
