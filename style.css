@@ -571,7 +571,7 @@ body {
 
 /* On crée une règle spécifique pour les boutons de la grille numérique */
 .numeric-grid .btn {
-    height: 50px;      /* On réduit la hauteur ici */
+    height: 40px;      /* On réduit la hauteur ici */
     font-size: 13px;   /* Taille du texte */
     margin-bottom: 5px; 
 }
