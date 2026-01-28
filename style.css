@@ -658,7 +658,7 @@ body {
     width: 230px;
     position: absolute;
     right: 0;
-    top: 0;
+    top: -30px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -683,7 +683,7 @@ body {
     grid-template-rows: auto auto;  /* 2 lignes : label + boutons */
     gap: 10px;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 90px;
 }
 
 
