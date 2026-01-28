@@ -15,7 +15,7 @@ let bassLevel = 0;
 let trebleLevel = 0;
 let userPaused = false;
 let isABLocked = false;
-const vfdColors = ['#40e0ff','#ffffff','#a0a0a0','#a68e72','#50ff7a'];
+const vfdColors = ['#ffffff','#a0a0a0','#F4DBFF','#DBE9FF','#B5B5B5','#40e0ff'];
 
 // CORRECTION 1 : Variable pour empêcher la double connexion audio
 let isAudioConnected = false;
@@ -116,14 +116,23 @@ muteBtn.onclick = () => {
 function startSearch(dir) {
     if (isABActive() || checkLock()) return; 
     if (!playlist.length || isPeakSearching) return;
-    audio.muted = true;
-    searchInterval = setInterval(() => {
-        audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + (dir * 2)));
-        updateTimeDisplay();
-    }, 100);
+    
+    if (dir > 0) {
+        // FWD : Accélération avec son
+        audio.playbackRate = 4.0;
+        if (audio.paused) audio.play();
+    } else {
+        // REW : Sauts en arrière (pas de son possible)
+        audio.muted = true;
+        searchInterval = setInterval(() => {
+            audio.currentTime = Math.max(0, audio.currentTime - 2);
+            updateTimeDisplay();
+        }, 100);
+    }
 }
 
 function stopSearch() {
+    audio.playbackRate = 1.0;
     if (searchInterval) {
         clearInterval(searchInterval);
         searchInterval = null;
@@ -188,13 +197,27 @@ document.getElementById('peak-btn').onclick = async () => {
 document.getElementById('vu-btn').onclick = () => {
     isVUOn = !isVUOn;
     const labels = [document.getElementById('lbl-L'), document.getElementById('lbl-R')];
+    const scale = document.querySelector('.vu-scale'); // Cible l'élément d'échelle
+
     if (!isVUOn) {
+        // Désactiver les labels L/R
         labels.forEach(l => l.className = 'vu-label');
+        
+        // Cacher l'échelle (graduation)
+        if (scale) scale.style.opacity = "0"; 
+
+        // Éteindre tous les segments
         ['meter-L', 'meter-R'].forEach(id => {
             const el = document.getElementById(id);
             for (let i = 0; i < 40; i++) el.children[i].className = 'meter-segment';
         });
-    } else labels.forEach(l => l.className = 'vu-label on');
+    } else {
+        // Activer les labels L/R
+        labels.forEach(l => l.className = 'vu-label on');
+        
+        // Afficher l'échelle
+        if (scale) scale.style.opacity = "1";
+    }
 };
 
 document.getElementById('ab-btn').onclick = () => {
