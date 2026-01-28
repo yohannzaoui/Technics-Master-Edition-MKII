@@ -985,3 +985,37 @@ body {
     font-weight: bold;
     margin-bottom: 30px;
 }
+
+/* Échelle graduée en dB pour les VU meters */
+.vu-scale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1px;
+    margin-bottom: -20px;
+    margin-left: 30px;
+    padding: 0 1px;
+}
+
+.vu-scale-mark {
+    font-family: var(--ui-font);
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--vfd-blue);
+    opacity: 0.6;
+    letter-spacing: 0px;
+    text-align: center;
+    flex: 1;
+}
+
+.vu-scale-mark:first-child {
+    text-align: left;
+}
+
+.vu-scale-mark:last-child {
+    text-align: right;
+}
+
+
+
+
