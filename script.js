@@ -188,13 +188,27 @@ document.getElementById('peak-btn').onclick = async () => {
 document.getElementById('vu-btn').onclick = () => {
     isVUOn = !isVUOn;
     const labels = [document.getElementById('lbl-L'), document.getElementById('lbl-R')];
+    const scale = document.querySelector('.vu-scale'); // Cible l'élément d'échelle
+
     if (!isVUOn) {
+        // Désactiver les labels L/R
         labels.forEach(l => l.className = 'vu-label');
+        
+        // Cacher l'échelle (graduation)
+        if (scale) scale.style.opacity = "0"; 
+
+        // Éteindre tous les segments
         ['meter-L', 'meter-R'].forEach(id => {
             const el = document.getElementById(id);
             for (let i = 0; i < 40; i++) el.children[i].className = 'meter-segment';
         });
-    } else labels.forEach(l => l.className = 'vu-label on');
+    } else {
+        // Activer les labels L/R
+        labels.forEach(l => l.className = 'vu-label on');
+        
+        // Afficher l'échelle
+        if (scale) scale.style.opacity = "1";
+    }
 };
 
 document.getElementById('ab-btn').onclick = () => {
