@@ -15,7 +15,7 @@ let bassLevel = 0;
 let trebleLevel = 0;
 let userPaused = false;
 let isABLocked = false;
-const vfdColors = ['#40e0ff','#ffffff','#a0a0a0','#a68e72','#50ff7a'];
+const vfdColors = ['#ffffff','#a0a0a0','#F4DBFF','#DBE9FF','#B5B5B5','#40e0ff'];
 
 // CORRECTION 1 : Variable pour empêcher la double connexion audio
 let isAudioConnected = false;
