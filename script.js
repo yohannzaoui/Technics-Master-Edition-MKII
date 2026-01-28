@@ -116,14 +116,23 @@ muteBtn.onclick = () => {
 function startSearch(dir) {
     if (isABActive() || checkLock()) return; 
     if (!playlist.length || isPeakSearching) return;
-    audio.muted = true;
-    searchInterval = setInterval(() => {
-        audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + (dir * 2)));
-        updateTimeDisplay();
-    }, 100);
+    
+    if (dir > 0) {
+        // FWD : Accélération avec son
+        audio.playbackRate = 4.0;
+        if (audio.paused) audio.play();
+    } else {
+        // REW : Sauts en arrière (pas de son possible)
+        audio.muted = true;
+        searchInterval = setInterval(() => {
+            audio.currentTime = Math.max(0, audio.currentTime - 2);
+            updateTimeDisplay();
+        }, 100);
+    }
 }
 
 function stopSearch() {
+    audio.playbackRate = 1.0;
     if (searchInterval) {
         clearInterval(searchInterval);
         searchInterval = null;
