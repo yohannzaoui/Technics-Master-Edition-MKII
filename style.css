@@ -1026,6 +1026,15 @@ body {
     text-align: right;
 }
 
+#main-time-display.time-inverse::before {
+    content: "-";
+    font-family: var(--digital-font);
+    font-size: 60px;
+    color: var(--vfd-blue);
+    text-shadow: 0 0 15px var(--vfd-blue-dim);
+    margin-right: 5px;
+}
+
 
 
 
