@@ -11,21 +11,21 @@ let isMuted = false;
 let volRepeatInterval = null;
 let vuMultiplier = 1.0;
 let bassFilter, trebleFilter;
-let bassLevel = 0;   
+let bassLevel = 0;
 let trebleLevel = 0;
 let userPaused = false;
 let isABLocked = false;
-const vfdColors = ['#ffffff','#a0a0a0','#DBE9FF','#B5B5B5'];
+const vfdColors = ['#ffffff', '#a0a0a0', '#DBE9FF', '#B5B5B5'];
 
 // CORRECTION 1 : Variable pour empêcher la double connexion audio
 let isAudioConnected = false;
 
 const gridWrapper = document.getElementById('grid-numbers-wrapper');
-for(let i=1; i<=20; i++) {
-    const s = document.createElement('span'); 
-    s.className='grid-num'; 
-    s.id=`gn-${i}`; 
-    s.innerText=i; 
+for (let i = 1; i <= 20; i++) {
+    const s = document.createElement('span');
+    s.className = 'grid-num';
+    s.id = `gn-${i}`;
+    s.innerText = i;
     gridWrapper.appendChild(s);
 }
 
@@ -33,7 +33,7 @@ function showVolumeDisplay() {
     if (volDisplayTimeout) clearTimeout(volDisplayTimeout);
     const timeLabel = document.getElementById('time-label');
     const timeSep = document.getElementById('time-sep');
-    
+
     if (isMuted) {
         timeLabel.innerText = "MUTE";
         document.getElementById('m-d1').innerText = " ";
@@ -42,8 +42,8 @@ function showVolumeDisplay() {
         document.getElementById('s-d2').innerText = "0";
     } else {
         timeLabel.innerText = "VOLUME";
-        let volPerc = Math.round(audio.volume * 100); 
-        if (volPerc > 99) volPerc = 99; 
+        let volPerc = Math.round(audio.volume * 100);
+        if (volPerc > 99) volPerc = 99;
         const s = volPerc.toString().padStart(2, '0');
         document.getElementById('m-d1').innerText = " ";
         document.getElementById('m-d2').innerText = " ";
@@ -114,9 +114,9 @@ muteBtn.onclick = () => {
 };
 
 function startSearch(dir) {
-    if (isABActive() || checkLock()) return; 
+    if (isABActive() || checkLock()) return;
     if (!playlist.length || isPeakSearching) return;
-    
+
     if (dir > 0) {
         // FWD : Accélération avec son
         audio.playbackRate = 4.0;
@@ -168,12 +168,12 @@ document.getElementById('peak-btn').onclick = async () => {
     document.getElementById('main-time-display').classList.add('vfd-input-blink');
     let maxVal = 0, peakTime = 0;
     const step = audio.duration / 50;
-    for(let i=0; i < 50; i++) {
+    for (let i = 0; i < 50; i++) {
         audio.currentTime = i * step;
         await new Promise(r => setTimeout(r, 40));
         analyzer.getByteFrequencyData(dataArray);
         let currentMax = Math.max(...dataArray);
-        if(currentMax > maxVal) { maxVal = currentMax; peakTime = audio.currentTime; }
+        if (currentMax > maxVal) { maxVal = currentMax; peakTime = audio.currentTime; }
     }
     audio.currentTime = peakTime;
     document.getElementById('main-time-display').classList.remove('vfd-input-blink');
@@ -202,9 +202,9 @@ document.getElementById('vu-btn').onclick = () => {
     if (!isVUOn) {
         // Désactiver les labels L/R
         labels.forEach(l => l.className = 'vu-label');
-        
+
         // Cacher l'échelle (graduation)
-        if (scale) scale.style.opacity = "0"; 
+        if (scale) scale.style.opacity = "0";
 
         // Éteindre tous les segments
         ['meter-L', 'meter-R'].forEach(id => {
@@ -214,7 +214,7 @@ document.getElementById('vu-btn').onclick = () => {
     } else {
         // Activer les labels L/R
         labels.forEach(l => l.className = 'vu-label on');
-        
+
         // Afficher l'échelle
         if (scale) scale.style.opacity = "1";
     }
@@ -224,22 +224,22 @@ document.getElementById('ab-btn').onclick = () => {
     if (playlist.length === 0) return;
     const abVfd = document.getElementById('vfd-ab');
     const abLockVfd = document.getElementById('vfd-ab-lock');
-    if (pointA === null) { 
-        pointA = audio.currentTime; 
-        abVfd.classList.add('active', 'vfd-input-blink'); 
+    if (pointA === null) {
+        pointA = audio.currentTime;
+        abVfd.classList.add('active', 'vfd-input-blink');
     } else if (pointB === null) {
-        if (audio.currentTime > pointA) { 
-            pointB = audio.currentTime; 
-            abVfd.classList.remove('vfd-input-blink'); 
-            abVfd.classList.add('active'); 
-            isABLocked = true; 
-            if (abLockVfd) abLockVfd.classList.add('active'); 
-            audio.currentTime = pointA; 
+        if (audio.currentTime > pointA) {
+            pointB = audio.currentTime;
+            abVfd.classList.remove('vfd-input-blink');
+            abVfd.classList.add('active');
+            isABLocked = true;
+            if (abLockVfd) abLockVfd.classList.add('active');
+            audio.currentTime = pointA;
         }
-    } else { 
+    } else {
         pointA = null; pointB = null; isABLocked = false;
         abVfd.classList.remove('active', 'vfd-input-blink');
-        if (abLockVfd) abLockVfd.classList.remove('active'); 
+        if (abLockVfd) abLockVfd.classList.remove('active');
     }
 };
 
@@ -275,26 +275,26 @@ document.getElementById('stop-btn').onclick = () => {
 
 function updateDig(prefix, val) {
     const s = Math.floor(Math.abs(val)).toString().padStart(2, '0');
-    document.getElementById(`${prefix}-d1`).innerText = s[s.length-2] || "0";
-    document.getElementById(`${prefix}-d2`).innerText = s[s.length-1] || "0";
+    document.getElementById(`${prefix}-d1`).innerText = s[s.length - 2] || "0";
+    document.getElementById(`${prefix}-d2`).innerText = s[s.length - 1] || "0";
 }
 
 function updateTimeDisplay() {
     const timeLabel = document.getElementById('time-label');
     const mainTimeDisplay = document.getElementById('main-time-display');
-    
-    if(timeLabel.innerText === "VOLUME" || timeLabel.innerText === "MUTE" || timeLabel.innerText === "VU SENSE" || timeLabel.innerText === "BASS" || 
-       timeLabel.innerText === "TREBLE" ||isPeakSearching) return; 
-    
+
+    if (timeLabel.innerText === "VOLUME" || timeLabel.innerText === "MUTE" || timeLabel.innerText === "VU SENSE" || timeLabel.innerText === "BASS" ||
+        timeLabel.innerText === "TREBLE" || isPeakSearching) return;
+
     let d = timeMode === 0 ? audio.currentTime : (audio.duration || 0) - audio.currentTime;
     const mins = Math.floor(d / 60).toString().padStart(2, '0');
     const secs = Math.floor(d % 60).toString().padStart(2, '0');
-    
-    document.getElementById('m-d1').innerText = mins[mins.length-2] || "0";
-    document.getElementById('m-d2').innerText = mins[mins.length-1] || "0";
-    document.getElementById('s-d1').innerText = secs[secs.length-2] || "0";
-    document.getElementById('s-d2').innerText = secs[secs.length-1] || "0";
-    
+
+    document.getElementById('m-d1').innerText = mins[mins.length - 2] || "0";
+    document.getElementById('m-d2').innerText = mins[mins.length - 1] || "0";
+    document.getElementById('s-d1').innerText = secs[secs.length - 2] || "0";
+    document.getElementById('s-d2').innerText = secs[secs.length - 1] || "0";
+
     // Ajouter une classe pour afficher le "-"
     if (timeMode === 1) {
         mainTimeDisplay.classList.add('time-inverse');
@@ -311,7 +311,7 @@ function updateGrid() {
         overArrow.classList.toggle('active', hasMoreThan20);
         overArrow.classList.toggle('vfd-input-blink', isCurrentTrackOver20);
     }
-    for(let i=1; i<=20; i++) {
+    for (let i = 1; i <= 20; i++) {
         const el = document.getElementById(`gn-${i}`);
         if (el) {
             el.classList.toggle('loaded', i <= playlist.length);
@@ -345,7 +345,7 @@ function loadTrack(idx, forcePlay = false) {
     const formatDisplay = document.getElementById('file-format-display');
     if (formatDisplay && currentFile.name) { formatDisplay.innerText = currentFile.name.split('.').pop().toUpperCase(); }
     updateDig('t', currentIndex + 1);
-    updateGrid(); 
+    updateGrid();
     if (forcePlay || isAfterReset || wasPlaying) {
         audio.play().then(() => { timeDisplay.classList.remove('vfd-blink-pause'); }).catch(e => console.log("Playback error:", e));
     } else {
@@ -354,7 +354,7 @@ function loadTrack(idx, forcePlay = false) {
         updateTimeDisplay();
     }
     updateMediaSession();
-    setupAudio(); 
+    setupAudio();
     extractMetadata(playlist[currentIndex]);
 }
 
@@ -368,8 +368,8 @@ if ('mediaSession' in navigator) {
 
 audio.onended = () => {
     if (isABActive()) return;
-    if (repeatMode === 1) { audio.play(); } 
-    else if (repeatMode === 2 || isRandom || currentIndex < playlist.length - 1) { loadTrack(currentIndex + 1, true); } 
+    if (repeatMode === 1) { audio.play(); }
+    else if (repeatMode === 2 || isRandom || currentIndex < playlist.length - 1) { loadTrack(currentIndex + 1, true); }
     else { audio.pause(); audio.currentTime = 0; updateTimeDisplay(); }
 };
 
@@ -415,7 +415,7 @@ function extractMetadata(file) {
             currentMeta = `${t.artist || "Unknown Artist"} - ${t.album || "Unknown Album"} - ${t.title || file.name}`;
             const p = t.picture;
             if (p) {
-                let b64 = ""; for(let i=0; i<p.data.length; i++) b64 += String.fromCharCode(p.data[i]);
+                let b64 = ""; for (let i = 0; i < p.data.length; i++) b64 += String.fromCharCode(p.data[i]);
                 currentArt = `data:${p.format};base64,${window.btoa(b64)}`;
             } else currentArt = "img/Technics_cover.png";
             updateMediaSession();
@@ -437,78 +437,78 @@ function openPlaylist() {
     document.getElementById('playlist-modal').style.display = 'flex';
 }
 
-document.getElementById('file-input').onchange = (e) => { 
-    playlist = Array.from(e.target.files); 
-    if(playlist.length) { 
-        document.getElementById('tray-front').classList.remove('open'); 
-        loadTrack(0); 
+document.getElementById('file-input').onchange = (e) => {
+    playlist = Array.from(e.target.files);
+    if (playlist.length) {
+        document.getElementById('tray-front').classList.remove('open');
+        loadTrack(0);
         updateGrid();
     }
 };
 
 document.getElementById('next-btn').onclick = () => {
-    if (checkLock() || isABActive()) return; 
+    if (checkLock() || isABActive()) return;
     loadTrack(currentIndex + 1);
 };
 
 document.getElementById('prev-btn').onclick = () => {
-    if (checkLock() || isABActive()) return; 
+    if (checkLock() || isABActive()) return;
     loadTrack(currentIndex - 1);
 };
 
 // CORRECTION 2 : Correction de l'ID du tiroir pour correspondre au HTML
 document.getElementById('eject-btn').onclick = () => document.getElementById('tray-front').classList.toggle('open');
 
-document.getElementById('random-btn').onclick = () => { 
-    isRandom = !isRandom; 
-    document.getElementById('vfd-random').classList.toggle('active', isRandom); 
+document.getElementById('random-btn').onclick = () => {
+    isRandom = !isRandom;
+    document.getElementById('vfd-random').classList.toggle('active', isRandom);
 };
-document.getElementById('repeat-btn').onclick = () => { 
+document.getElementById('repeat-btn').onclick = () => {
     repeatMode = (repeatMode + 1) % 3;
     document.getElementById('vfd-repeat-1').classList.toggle('active', repeatMode === 1);
     document.getElementById('vfd-repeat-all').classList.toggle('active', repeatMode === 2);
 };
 
-document.getElementById('time-btn').onclick = () => { 
-    timeMode = (timeMode + 1) % 2; 
+document.getElementById('time-btn').onclick = () => {
+    timeMode = (timeMode + 1) % 2;
     const label = document.getElementById('time-label');
     label.innerText = (timeMode === 0) ? "Min : Sec" : "- Min : Sec";
     updateTimeDisplay();
 };
 
-function openArt() { 
-    document.getElementById('art-image').src = currentArt; 
+function openArt() {
+    document.getElementById('art-image').src = currentArt;
     document.getElementById('art-info').innerText = currentMeta;
-    document.getElementById('art-modal').style.display = 'flex'; 
+    document.getElementById('art-modal').style.display = 'flex';
 }
 
 // CORRECTION 3 : Vérification isAudioConnected pour éviter l'erreur de re-connexion
 function setupAudio() {
     if (audioCtx && audioCtx.state === "suspended") { audioCtx.resume(); return; }
-    if (isAudioConnected) return; 
+    if (isAudioConnected) return;
 
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const src = audioCtx.createMediaElementSource(audio);
-    
+
     bassFilter = audioCtx.createBiquadFilter();
     bassFilter.type = "lowshelf";
     bassFilter.frequency.value = 200;
     bassFilter.gain.value = bassLevel;
-    
+
     trebleFilter = audioCtx.createBiquadFilter();
     trebleFilter.type = "highshelf";
     trebleFilter.frequency.value = 3000;
     trebleFilter.gain.value = trebleLevel;
-    
-    analyzer = audioCtx.createAnalyser(); 
+
+    analyzer = audioCtx.createAnalyser();
     analyzer.fftSize = 64;
     dataArray = new Uint8Array(analyzer.frequencyBinCount);
-    
+
     src.connect(bassFilter);
     bassFilter.connect(trebleFilter);
     trebleFilter.connect(analyzer);
     analyzer.connect(audioCtx.destination);
-    
+
     isAudioConnected = true;
     renderVU();
 }
@@ -519,7 +519,7 @@ function renderVU() {
     analyzer.getByteFrequencyData(dataArray);
     ['meter-L', 'meter-R'].forEach((id, idx) => {
         const el = document.getElementById(id);
-        let rawVal = dataArray[idx + 2] * vuMultiplier; 
+        let rawVal = dataArray[idx + 2] * vuMultiplier;
         const val = Math.floor((rawVal / 255) * 40);
         for (let i = 0; i < 40; i++) {
             if (i < val) {
@@ -539,7 +539,7 @@ function renderVU() {
 
 ['meter-L', 'meter-R'].forEach(id => {
     const el = document.getElementById(id);
-    for(let i=0; i<40; i++) el.appendChild(document.createElement('div')).className = 'meter-segment';
+    for (let i = 0; i < 40; i++) el.appendChild(document.createElement('div')).className = 'meter-segment';
 });
 
 audio.volume = 0.02;
@@ -646,11 +646,11 @@ document.getElementById('vfd-color-trigger').onclick = (e) => {
 function resetToneDefault() {
     bassLevel = 0;
     trebleLevel = 0;
-    
+
     // Application aux filtres audio
     if (bassFilter) bassFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0.01);
     if (trebleFilter) trebleFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0.01);
-    
+
     // Affichage VFD temporaire
     showToneDisplay("DEFAULT", 0);
 }
@@ -658,7 +658,7 @@ function resetToneDefault() {
 function changeBackgroundColor(color) {
     // Applique la couleur au fond de la page
     document.body.style.background = color;
-    
+
     // Si vous avez une image de fond (métal brossé), on la retire pour voir la couleur
     document.body.style.backgroundImage = 'none';
 
