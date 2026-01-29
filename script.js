@@ -281,14 +281,26 @@ function updateDig(prefix, val) {
 
 function updateTimeDisplay() {
     const timeLabel = document.getElementById('time-label');
+    const mainTimeDisplay = document.getElementById('main-time-display');
+    
     if(timeLabel.innerText === "VOLUME" || timeLabel.innerText === "MUTE" || timeLabel.innerText === "VU SENSE" || timeLabel.innerText === "BASS" || 
        timeLabel.innerText === "TREBLE" ||isPeakSearching) return; 
+    
     let d = timeMode === 0 ? audio.currentTime : (audio.duration || 0) - audio.currentTime;
-    const mins = Math.floor(d / 60).toString().padStart(2, '0'), secs = Math.floor(d % 60).toString().padStart(2, '0');
+    const mins = Math.floor(d / 60).toString().padStart(2, '0');
+    const secs = Math.floor(d % 60).toString().padStart(2, '0');
+    
     document.getElementById('m-d1').innerText = mins[mins.length-2] || "0";
     document.getElementById('m-d2').innerText = mins[mins.length-1] || "0";
     document.getElementById('s-d1').innerText = secs[secs.length-2] || "0";
     document.getElementById('s-d2').innerText = secs[secs.length-1] || "0";
+    
+    // Ajouter une classe pour afficher le "-"
+    if (timeMode === 1) {
+        mainTimeDisplay.classList.add('time-inverse');
+    } else {
+        mainTimeDisplay.classList.remove('time-inverse');
+    }
 }
 
 function updateGrid() {
