@@ -1,5 +1,6 @@
 :root {
-    --bg-black: #0d0d0d; /* background par défaut*/
+    --bg-black: #0d0d0d;
+    /* background par défaut*/
     --deck-gray: #1a1a1b;
     --vfd-blue: #40e0ff;
     --vfd-green: #008000;
@@ -18,34 +19,32 @@
     --largeur: 10px;
     --ui-font: 'Segoe UI', Tahoma, sans-serif;
     --digital-font: 'DS-Digital', sans-serif;
-    --brushed-metal: conic-gradient(
-        from 0deg, #222 0deg, #444 45deg, #222 90deg, #444 135deg, #222 180deg, #444 225deg, #222 270deg, #444 315deg, #222 360deg
-        );
+    --brushed-metal: conic-gradient(from 0deg, #222 0deg, #444 45deg, #222 90deg, #444 135deg, #222 180deg, #444 225deg, #222 270deg, #444 315deg, #222 360deg);
 }
 
 body {
     background-color: var(--bg-black);
     color: var(--text-silver);
     font-family: var(--ui-font);
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    min-height: 100vh; 
-    margin: 0; 
+    min-height: 100vh;
+    margin: 0;
     user-select: none;
     overflow: hidden;
 }
 
 .deck-container {
-    width: 1600px; 
+    width: 1600px;
     background-color: var(--deck-gray);
-    padding: 25px 120px 19px 120px; 
-    border-radius: 10px; 
+    padding: 25px 120px 19px 120px;
+    border-radius: 10px;
     box-shadow: 0 200px 200px var(--shadow-color, rgb(109, 109, 109));
     position: relative;
     z-index: 1;
     /* Indispensable pour que les bordures dorées suivent l'arrondi */
-    overflow: hidden; 
+    overflow: hidden;
     /* On s'assure que les bordures physiques sont à zéro */
     border-left: none;
     border-right: none;
@@ -54,25 +53,26 @@ body {
 }
 
 /* Pseudo-éléments pour les bordures dorées brillantes */
-.deck-container::before, 
+.deck-container::before,
 .deck-container::after {
     content: "";
     position: absolute;
     top: 0;
-    width: var(--largeur); /* Utilise votre variable existante */
+    width: var(--largeur);
+    /* Utilise votre variable existante */
     height: 100%;
-    z-index: 0; /* Passe derrière le contenu du deck */
-    
+    z-index: 0;
+    /* Passe derrière le contenu du deck */
+
     /* Dégradé Or brossé avec opacité réglée */
-    background: linear-gradient(
-        to bottom, 
-        rgba(140, 109, 53, 0.7) 0%, 
-        rgba(189, 148, 72, 0.85) 25%, 
-        rgba(247, 226, 180, 0.95) 50%, /* Point de brillance */
-        rgba(189, 148, 72, 0.85) 75%, 
-        rgba(140, 109, 53, 0.7) 100%
-    );
-    
+    background: linear-gradient(to bottom,
+            rgba(140, 109, 53, 0.7) 0%,
+            rgba(189, 148, 72, 0.85) 25%,
+            rgba(247, 226, 180, 0.95) 50%,
+            /* Point de brillance */
+            rgba(189, 148, 72, 0.85) 75%,
+            rgba(140, 109, 53, 0.7) 100%);
+
     /* Effet de métal poli doux */
     filter: blur(0.4px);
     transition: filter 0.3s ease, box-shadow 0.3s ease;
@@ -102,29 +102,29 @@ body {
 
 
 .brand-header {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px; 
-    padding-bottom: 12px; 
+    margin-bottom: 25px;
+    padding-bottom: 12px;
     border-bottom: none;
     margin-left: -70px;
     margin-right: -70px;
 }
 
-.main-logo { 
-    height: 23px; 
-    display: block; 
+.main-logo {
+    height: 23px;
+    display: block;
     margin-left: 0px;
 }
 
-.model-name { 
-    font-size: 12px; 
-    color: var(--text-silver); 
-    letter-spacing: 3px; 
-    font-weight: bold; 
-    text-transform: uppercase; 
-    margin-right: 0px; 
+.model-name {
+    font-size: 12px;
+    color: var(--text-silver);
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 0px;
 }
 
 .central-display-section {
@@ -148,10 +148,10 @@ body {
 
 .tray-outer-slot {
     width: 880px;
-    height: 75px; 
+    height: 75px;
     background: none;
-    margin-bottom: 35px; 
-    position: relative; 
+    margin-bottom: 35px;
+    position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -180,37 +180,44 @@ body {
 .tray-mechanism.open {
     transform: translateY(70px);
 }
-.mash-logo-tray { 
-    height: 35px; 
-    opacity: 0.8;  
+
+.mash-logo-tray {
+    height: 35px;
+    opacity: 0.8;
 }
 
 .eject-section {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
 }
 
 .power-section {
-    width: 110px;  /* Même largeur qu'un bouton de la grille (230-10)/2 */
+    width: 110px;
+    /* Même largeur qu'un bouton de la grille (230-10)/2 */
     position: absolute;
-    left: 0;      /* Augmentez pour déplacer vers la DROITE (ex: 20px, 50px) */
-    top: 0;       /* Augmentez pour descendre (ex: 20px, 50px, 100px) */
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    left: 0;
+    /* Augmentez pour déplacer vers la DROITE (ex: 20px, 50px) */
+    top: 0;
+    /* Augmentez pour descendre (ex: 20px, 50px, 100px) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5px;
 }
 
 .controls-left-stack {
-    width: 230px;  /* 2 boutons de 110px + 10px gap = 230px */
+    width: 230px;
+    /* 2 boutons de 110px + 10px gap = 230px */
     position: absolute;
     left: 0;
-    top: 130px;  /* Positionné sous le bouton Power (hauteur 50px + 10px gap) */
+    top: 130px;
+    /* Positionné sous le bouton Power (hauteur 50px + 10px gap) */
     display: grid;
-    grid-template-columns: 1fr 1fr;  /* 2 colonnes pour mettre les boutons côte à côte */
+    grid-template-columns: 1fr 1fr;
+    /* 2 colonnes pour mettre les boutons côte à côte */
     gap: 10px;
 }
 
@@ -225,179 +232,180 @@ body {
     height: 50px;
 }
 
-.transport-grid { 
-    display: grid; 
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 35px; 
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 35px;
     margin-top: 5px;
     margin-bottom: 0px;
     width: 880px;
-    align-items: end; 
+    align-items: end;
 }
 
-.eject-section { 
-    margin-top:20px; 
+.eject-section {
+    margin-top: 20px;
 }
 
 .upper-label, .volume-label {
-    font-size: 9px; 
-    font-weight: bold; 
+    font-size: 9px;
+    font-weight: bold;
     color: var(--text-silver);
-    letter-spacing: 1px; 
-    text-transform: uppercase; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
     white-space: nowrap;
 }
 
 .display-panel {
-    background: #000; 
-    padding: 25px 35px; 
+    background: #000;
+    padding: 25px 35px;
     border: 4px solid #111;
-    box-shadow: inset 0 0 60px rgba(0,0,0,1), 0 0 20px var(--vfd-glow);
-    min-height: 240px; 
-    display: flex; 
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 1), 0 0 20px var(--vfd-glow);
+    min-height: 240px;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
     width: 880px;
-    
+
 }
 
-.vfd-main-row { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-end; 
-    margin-bottom: 10px; 
+.vfd-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
 }
 
-.vfd-col-track { 
-    flex: 0 0 120px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-start; 
+.vfd-col-track {
+    flex: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.vfd-col-time { 
-    flex: 0 0 240px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-end; 
+.vfd-col-time {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
-.vfd-col-indicators { 
-    flex: 1; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 4px; 
-    border-left: 1px solid #111; 
+.vfd-col-indicators {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-left: 1px solid #111;
     border-right: 1px solid #111;
-    margin: 0 25px; 
+    margin: 0 25px;
     padding: 5px 0;
 }
 
 .digital-counter {
-    display: flex; 
-    align-items: baseline; 
-    font-family: var(--digital-font); 
-    font-size: 60px; 
-    font-weight: bold; 
+    display: flex;
+    align-items: baseline;
+    font-family: var(--digital-font);
+    font-size: 60px;
+    font-weight: bold;
     color: var(--vfd-blue);
-    text-shadow: 0 0 15px var(--vfd-blue-dim); 
-    line-height: 1; 
+    text-shadow: 0 0 15px var(--vfd-blue-dim);
+    line-height: 1;
     height: 60px;
 }
 
-.digit { 
-    width: 38px; 
-    text-align: center; 
-}
-
-.time-separator { 
-    width: 15px; 
-    text-align: center; 
-    font-size: 40px; 
-    margin: 0 2px; 
-}
-
-.label-vfd { 
-    font-size: 11px; 
-    color: var(--vfd-blue); /* couleur texte par défaut de l'afficheur */
-    font-family: var(--ui-font); 
-    font-weight: bold; 
-    text-transform: uppercase; 
-    margin-bottom: 4px; 
-    letter-spacing: 2px;
-}
-
-.label-vfd.clickable { 
-    color: var(--vfd-blue); 
-    transition: color 0.2s; 
-}
-
-.vu-meters { 
-    margin-top: 15px; 
-    padding-top: 10px; 
-    border-top: 1px solid #0a0a0a; 
-}
-
-.vu-row { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    margin-bottom: 8px; 
-}
-
-.vu-label { 
-    font-family: var(--ui-font); 
-    font-size: 14px; 
-    font-weight: 900; 
-    width: 15px; 
-    color: #08181a; 
-    transition: all 0.3s; 
-    line-height: 1; 
+.digit {
+    width: 38px;
     text-align: center;
 }
 
-.vu-label.on { 
-    color: var(--vfd-blue); 
-    text-shadow: 0 0 10px var(--vfd-glow); 
+.time-separator {
+    width: 15px;
+    text-align: center;
+    font-size: 40px;
+    margin: 0 2px;
 }
 
-.meter-container { 
-    flex: 1; 
-    height: 12px; 
-    background: #080808; 
-    display: flex; 
-    gap: 2px; 
-    padding: 1px; 
-    align-items: stretch; 
+.label-vfd {
+    font-size: 11px;
+    color: var(--vfd-blue);
+    /* couleur texte par défaut de l'afficheur */
+    font-family: var(--ui-font);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
 }
 
-.meter-segment { 
-    flex: 1; 
-    background: var(--vfd-off); 
-    transition: background 0.05s; 
+.label-vfd.clickable {
+    color: var(--vfd-blue);
+    transition: color 0.2s;
 }
 
-.meter-segment.on-blue { 
-    background: var(--vfd-blue); 
-    box-shadow: 0 0 5px var(--vfd-blue); 
+.vu-meters {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #0a0a0a;
 }
 
-.meter-segment.on-orange { 
-    background: #ff8800; 
-    box-shadow: 0 0 5px #ff8800; 
+.vu-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 8px;
 }
 
-.meter-segment.on-red { 
-    background: var(--vfd-red); 
-    box-shadow: 0 0 5px var(--vfd-red); 
+.vu-label {
+    font-family: var(--ui-font);
+    font-size: 14px;
+    font-weight: 900;
+    width: 15px;
+    color: #08181a;
+    transition: all 0.3s;
+    line-height: 1;
+    text-align: center;
 }
 
-.main-interface { 
-    display: grid; 
+.vu-label.on {
+    color: var(--vfd-blue);
+    text-shadow: 0 0 10px var(--vfd-glow);
+}
+
+.meter-container {
+    flex: 1;
+    height: 12px;
+    background: #080808;
+    display: flex;
+    gap: 2px;
+    padding: 1px;
+    align-items: stretch;
+}
+
+.meter-segment {
+    flex: 1;
+    background: var(--vfd-off);
+    transition: background 0.05s;
+}
+
+.meter-segment.on-blue {
+    background: var(--vfd-blue);
+    box-shadow: 0 0 5px var(--vfd-blue);
+}
+
+.meter-segment.on-orange {
+    background: #ff8800;
+    box-shadow: 0 0 5px #ff8800;
+}
+
+.meter-segment.on-red {
+    background: var(--vfd-red);
+    box-shadow: 0 0 5px var(--vfd-red);
+}
+
+.main-interface {
+    display: grid;
     grid-template-columns: 230px 880px 230px;
     gap: 10px;
     align-items: start;
@@ -405,45 +413,50 @@ body {
     width: fit-content;
 }
 
-.btn { 
-    background: linear-gradient(185deg, #2a2a2b, #151516); /* dégradé bouton */
-    border: 1px solid #111; 
-    color: var(--text-silver); 
-    cursor: pointer; 
-    font-size: 11px; 
-    font-weight: bold; 
-    box-shadow: 3px 3px 6px #000; 
-    text-transform: uppercase; 
-    height: 50px; 
+.btn {
+    background: linear-gradient(185deg, #2a2a2b, #151516);
+    /* dégradé bouton */
+    border: 1px solid #111;
+    color: var(--text-silver);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px #000;
+    text-transform: uppercase;
+    height: 50px;
     width: 100%;
-    padding: 0 5px; 
+    padding: 0 5px;
     text-align: center;
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.btn:active { 
-    background: linear-gradient(145deg, #151516, #2a2a2b); 
-    box-shadow: inset 2px 2px 5px #000; 
-    color: var(--text-white); 
+.btn:active {
+    background: linear-gradient(145deg, #151516, #2a2a2b);
+    box-shadow: inset 2px 2px 5px #000;
+    color: var(--text-white);
 }
 
-#power-reset-btn { 
-    height: 50px; 
-    width: 100%;  /* Prend toute la largeur de power-section (110px) */
-    color: var(--vfd-red) !important;  /* Toujours blanc */
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);  /* Effet lumineux */
+#power-reset-btn {
+    height: 50px;
+    width: 100%;
+    /* Prend toute la largeur de power-section (110px) */
+    color: var(--vfd-red) !important;
+    /* Toujours blanc */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    /* Effet lumineux */
 }
 
 #power-reset-btn i {
-    color: var(--vfd-red) !important;  /* Icône toujours blanche */
+    color: var(--vfd-red) !important;
+    /* Icône toujours blanche */
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
-#stop-btn, #eject-btn { 
-    font-size: 22px; 
-    color: var(--text-silver); 
+#stop-btn, #eject-btn {
+    font-size: 22px;
+    color: var(--text-silver);
 }
 
 .controls-and-hatch-section {
@@ -453,175 +466,196 @@ body {
     align-items: center;
     margin-top: 25px;
     margin-bottom: 0px;
-    padding: 0 30px;  /* Augmentez cette valeur pour réduire la largeur de la trappe */
-                       /* Ex: 50px = trappe plus étroite, 10px = trappe plus large */
+    padding: 0 30px;
+    /* Augmentez cette valeur pour réduire la largeur de la trappe */
+    /* Ex: 50px = trappe plus étroite, 10px = trappe plus large */
     box-sizing: border-box;
 }
 
-.numeric-grid { 
-    display: grid; 
-    grid-template-columns: repeat(10, 1fr); 
-    gap: 35px; 
+.numeric-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 35px;
     margin-top: 25px;
     margin-bottom: 5px;
     width: 880px;
 }
 
 /* Taille du logo HR */
-.hr-logo-bottom { 
-    position: absolute; 
-    left: 50px; 
-    bottom: 65px; 
-    height: 40px; 
-    opacity: 0.7; 
-    pointer-events: none; 
+.hr-logo-bottom {
+    position: absolute;
+    left: 50px;
+    bottom: 65px;
+    height: 40px;
+    opacity: 0.7;
+    pointer-events: none;
     margin-bottom: -15px;
 }
 
 /* Modals */
 #art-modal, #playlist-modal {
-    display: none; 
-    position: fixed; 
-    z-index: 10000; 
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.95); 
-    justify-content: center; 
-    align-items: center; 
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
     backdrop-filter: blur(15px);
 }
 
 .modal-content {
-    background: #111; 
-    border: 2px solid #333; 
+    background: #111;
+    border: 2px solid #333;
     padding: 30px;
-    box-shadow: 0 0 100px rgba(0,0,0,1); 
-    text-align: center; 
+    box-shadow: 0 0 100px rgba(0, 0, 0, 1);
+    text-align: center;
     border-radius: 8px;
 }
-.list-content { 
-    max-width: 600px; 
-    width: 90%; 
-    max-height: 80vh; 
-    overflow-y: auto; 
+
+.list-content {
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
-#track-list-container { 
-    text-align: left; 
-    margin-top: 15px; 
-    border-top: 1px solid #222; 
+#track-list-container {
+    text-align: left;
+    margin-top: 15px;
+    border-top: 1px solid #222;
 }
 
-.track-item { 
-    padding: 12px; 
-    border-bottom: 1px solid #222; 
-    cursor: pointer; 
+.track-item {
+    padding: 12px;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
     color: var(--text-silver);
-    font-size: 14px; 
-    transition: all 0.2s; 
+    font-size: 14px;
+    transition: all 0.2s;
     font-family: var(--ui-font);
 }
 
-.track-item:hover { 
-    background: #1a1a1b; 
-    color: var(--vfd-blue); 
+.track-item:hover {
+    background: #1a1a1b;
+    color: var(--vfd-blue);
 }
 
-.track-item.active { 
-    color: var(--vfd-red); 
-    font-weight: bold; 
-    background: #080808; 
+.track-item.active {
+    color: var(--vfd-red);
+    font-weight: bold;
+    background: #080808;
 }
 
-#art-image { 
-    max-width: 600px; 
-    max-height: 600px; 
-    width: 100%; 
-    border-radius: 4px; 
+#art-image {
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    border-radius: 4px;
 }
 
-#art-info { 
-    color: var(--vfd-blue); 
-    margin-top: 25px; 
-    font-weight: bold; 
-    text-transform: uppercase; 
-    font-size: 16px; 
+#art-info {
+    color: var(--vfd-blue);
+    margin-top: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
 }
 
 /* Grille et Indicateurs */
-.track-grid { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 10px; 
-    margin: 20px 0; 
-    padding: 12px 0; 
-    border-top: 1px solid #0a0a0a; 
-    border-bottom: 1px solid #0a0a0a; 
+.track-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 12px 0;
+    border-top: 1px solid #0a0a0a;
+    border-bottom: 1px solid #0a0a0a;
 }
 
-.grid-num { 
-    font-size: 14px; 
-    font-weight: bold; 
-    color: #0d0d0d; 
-    min-width: 18px; 
-    text-align: center; 
+.grid-num {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0d0d0d;
+    min-width: 18px;
+    text-align: center;
 }
 
-.grid-num.loaded { 
-    color: var(--vfd-blue); /* Remplace #40e0ff par la variable */
-    transition: color 0.3s ease; /* Optionnel : pour une transition douce lors du clic */
+.grid-num.loaded {
+    color: var(--vfd-blue);
+    /* Remplace #40e0ff par la variable */
+    transition: color 0.3s ease;
+    /* Optionnel : pour une transition douce lors du clic */
 }
 
-.grid-num.active-track { 
-    color: #ff3333 !important; 
-    text-shadow: 0 0 12px #ff3333; 
+.grid-num.active-track {
+    color: #ff3333 !important;
+    text-shadow: 0 0 12px #ff3333;
 }
 
-.arrow-indicator { 
-    font-size: 14px; 
-    color: #0d0d0d; 
-    visibility: hidden; 
+.arrow-indicator {
+    font-size: 14px;
+    color: #0d0d0d;
+    visibility: hidden;
 }
 
-.arrow-indicator.active { 
+.arrow-indicator.active {
     visibility: visible;
-    color: #ff3333; 
-    text-shadow: 0 0 10px #ff3333; 
+    color: #ff3333;
+    text-shadow: 0 0 10px #ff3333;
 }
 
-.vfd-indicator { 
-    font-family: var(--ui-font); 
-    font-size: 10px; 
-    font-weight: bold; 
-    color: #08181a; 
-    text-transform: uppercase; 
+.vfd-indicator {
+    font-family: var(--ui-font);
+    font-size: 10px;
+    font-weight: bold;
+    color: #08181a;
+    text-transform: uppercase;
 }
 
-#vfd-ab-lock.active { 
-    font-family: var(--ui-font); 
-    font-size: 10px; 
-    font-weight: bold; 
-    color: var(--vfd-red); 
-    text-transform: uppercase; 
+#vfd-ab-lock.active {
+    font-family: var(--ui-font);
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--vfd-red);
+    text-transform: uppercase;
 }
 
-.vfd-indicator.active { 
-    color: var(--vfd-blue); 
-    text-shadow: 0 0 8px var(--vfd-blue); 
+.vfd-indicator.active {
+    color: var(--vfd-blue);
+    text-shadow: 0 0 8px var(--vfd-blue);
 }
 
 /* Animations */
-@keyframes vfd-input-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-.vfd-input-blink { animation: vfd-input-blink 1s infinite; }
-.vfd-blink-pause { animation: vfd-input-blink 1s infinite; }
+@keyframes vfd-input-blink {
+    0%, 49% {
+        opacity: 1;
+    }
+
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+.vfd-input-blink {
+    animation: vfd-input-blink 1s infinite;
+}
+
+.vfd-blink-pause {
+    animation: vfd-input-blink 1s infinite;
+}
 
 .invisible-link {
-    text-decoration: none; /* Supprime le soulignement */
-    cursor: default;       /* Empêche la flèche de devenir une main */
-    outline: none;         /* Supprime le cadre bleu au clic */
+    text-decoration: none;
+    /* Supprime le soulignement */
+    cursor: default;
+    /* Empêche la flèche de devenir une main */
+    outline: none;
+    /* Supprime le cadre bleu au clic */
     display: inline-block;
 }
 
@@ -643,23 +677,27 @@ body {
 
 /* On crée une règle spécifique pour les boutons de la grille numérique */
 .numeric-grid .btn {
-    height: 40px;      /* On réduit la hauteur ici */
-    font-size: 13px;   /* Taille du texte */
-    margin-bottom: 5px; 
+    height: 40px;
+    /* On réduit la hauteur ici */
+    font-size: 13px;
+    /* Taille du texte */
+    margin-bottom: 5px;
 }
 
 
 /* Ciblage spécifique de la rangée de transport (Play, Stop, Next, etc.) */
 .transport-grid .btn {
     height: 60px;
-    width: 100%;        /* Prend toute la largeur de sa cellule */
+    width: 100%;
+    /* Prend toute la largeur de sa cellule */
     font-size: 10px;
     padding: 0;
 }
 
 /* Optionnel : Ajuster l'espace entre le label (ex: PLAY/PAUSE) et le bouton */
 .transport-grid .eject-section {
-    gap: 5px;           /* Espace entre le texte au-dessus et le bouton */
+    gap: 5px;
+    /* Espace entre le texte au-dessus et le bouton */
 }
 
 /* On cible le conteneur des boutons de volume */
@@ -688,8 +726,10 @@ body {
 
 .volume-controls {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;  /* 3 colonnes pour les boutons */
-    grid-template-rows: auto auto;  /* 2 lignes : label + boutons */
+    grid-template-columns: 1fr 1fr 1fr;
+    /* 3 colonnes pour les boutons */
+    grid-template-rows: auto auto;
+    /* 2 lignes : label + boutons */
     gap: 10px;
     width: 100%;
     margin-top: 90px;
@@ -703,8 +743,10 @@ body {
 
 /* Remplace .volume-label par la classe que tu utilises pour le texte "VOLUME" */
 .volume-label {
-    display: block; /* S'assure que l'élément peut être déplacé */
-    transform: translateY(30px); /* Descend le mot de 15px vers le bas */
+    display: block;
+    /* S'assure que l'élément peut être déplacé */
+    transform: translateY(30px);
+    /* Descend le mot de 15px vers le bas */
 }
 
 .label-tiny {
@@ -719,7 +761,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-top: 20px; /* Espace sous le bloc volume */
+    margin-top: 20px;
+    /* Espace sous le bloc volume */
 }
 
 .vu-controls-container {
@@ -745,13 +788,16 @@ body {
 }
 
 #over-arrow {
-    color: #220000; /* Couleur éteinte (rouge très sombre) */
+    color: #220000;
+    /* Couleur éteinte (rouge très sombre) */
     transition: all 0.3s;
 }
 
 #over-arrow.active {
-    color: #f00; /* Rouge vif */
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8); /* Effet néon/VFD */
+    color: #f00;
+    /* Rouge vif */
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+    /* Effet néon/VFD */
 }
 
 
@@ -764,21 +810,25 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    
+
     /* Dégradé de 180deg pour aller de haut en bas */
     /* On crée une bande claire en haut qui s'estompe rapidement */
-    background: linear-gradient(
-        180deg, 
-        rgba(255, 255, 255, 0.15) 0%,   /* Éclat maximal au bord supérieur */
-        rgba(255, 255, 255, 0.05) 15%,  /* Dégradé rapide */
-        transparent 50%,                /* Zone sombre au milieu pour la lisibilité */
-        rgba(255, 255, 255, 0.02) 80%,  /* Très léger reflet de surface en bas */
-        rgba(255, 255, 255, 0.07) 100%  /* Petit liseré de lumière sur le bord bas */
-    );
-    
-    z-index: 999; 
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            /* Éclat maximal au bord supérieur */
+            rgba(255, 255, 255, 0.05) 15%,
+            /* Dégradé rapide */
+            transparent 50%,
+            /* Zone sombre au milieu pour la lisibilité */
+            rgba(255, 255, 255, 0.02) 80%,
+            /* Très léger reflet de surface en bas */
+            rgba(255, 255, 255, 0.07) 100%
+            /* Petit liseré de lumière sur le bord bas */
+        );
+
+    z-index: 999;
     pointer-events: none;
-   
+
     /* Ajout d'une légère brillance sur toute la surface pour l'effet "vitre" */
     background-color: rgba(255, 255, 255, 0.01);
 }
@@ -796,17 +846,21 @@ body {
     width: 100%;
     height: 100%;
     /* Un dégradé très fin pour simuler l'aluminium brossé */
-    background: linear-gradient(180deg, 
-        rgba(255,255,255,0.03) 0%, 
-        transparent 50%, 
-        rgba(0,0,0,0.1) 100%);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.1) 100%);
 }
 
 .upper-label {
-    display: block;        /* Permet d'appliquer des marges correctement */
-    margin-top: 5px;      /* Ajuste cette valeur pour descendre le mot plus ou moins bas */
-    margin-bottom: 3px;    /* Espace entre le mot et la trappe */
-    transition: all 0.3s;  /* Optionnel : pour un mouvement fluide si tu le modifies */
+    display: block;
+    /* Permet d'appliquer des marges correctement */
+    margin-top: 5px;
+    /* Ajuste cette valeur pour descendre le mot plus ou moins bas */
+    margin-bottom: 3px;
+    /* Espace entre le mot et la trappe */
+    transition: all 0.3s;
+    /* Optionnel : pour un mouvement fluide si tu le modifies */
     text-align: center;
 }
 
@@ -814,16 +868,19 @@ body {
 /* Modification des marges pour s'adapter à la nouvelle position */
 .tone-controls-row {
     display: flex;
-    justify-content: flex-start; /* Aligne tout à gauche */
+    justify-content: flex-start;
+    /* Aligne tout à gauche */
     align-items: center;
     height: 100%;
-    padding-left: 30px; /* C'est cette valeur qui gère maintenant la position à gauche */
-    gap: 15px; 
+    padding-left: 30px;
+    /* C'est cette valeur qui gère maintenant la position à gauche */
+    gap: 15px;
 }
 
 .tone-group {
     display: flex;
-    align-items: flex-start; /* Remplacez 'center' par 'flex-start' si vous voulez tout coller à gauche */
+    align-items: flex-start;
+    /* Remplacez 'center' par 'flex-start' si vous voulez tout coller à gauche */
     gap: 1px;
     margin-bottom: -15px;
 }
@@ -831,7 +888,8 @@ body {
 .tone-group-wrapper .upper-label {
     display: block;
     position: relative;
-    top: 5px; /* Ajuste cette valeur : 20px pour descendre, -20px pour monter */
+    top: 5px;
+    /* Ajuste cette valeur : 20px pour descendre, -20px pour monter */
     text-align: center;
     width: 100%;
 }
@@ -855,7 +913,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;  /* Permet à la trappe de prendre toute la largeur disponible */
+    width: 100%;
+    /* Permet à la trappe de prendre toute la largeur disponible */
 }
 
 .display-and-controls {
@@ -873,7 +932,7 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
     z-index: 100;
     box-sizing: border-box;
 }
@@ -886,7 +945,7 @@ body {
     height: 100%;
     background: linear-gradient(180deg, #1a1a1b 0%, #151516 100%);
     border: 2px solid #000;
-    border-top-color: #333; 
+    border-top-color: #333;
     box-sizing: border-box;
     z-index: 20;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -896,7 +955,8 @@ body {
 
 
 #tone-hatch-block.hatch-open {
-    transform: translateY(90px); /* Glisse vers le bas */
+    transform: translateY(90px);
+    /* Glisse vers le bas */
 }
 
 /* On ajuste l'alignement des boutons derrière la trappe */
@@ -906,7 +966,7 @@ body {
     align-items: center;
     height: 100%;
     padding: 0 10px;
-	gap: 8px;
+    gap: 8px;
 }
 
 .label-tiny {
@@ -922,11 +982,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     font-size: 10px;
     letter-spacing: 1px;
     font-weight: bold;
-    
+
     color: #9aa0a5;
     text-shadow:
         0 1px 0 #000,
@@ -941,16 +1001,18 @@ body {
 .hatch-open-label {
     position: absolute;
     /* On fixe la position dans le coin haut gauche */
-    top: 6px;   /* Distance depuis le haut */
-    left: 8px;  /* Distance depuis la gauche */
-    
+    top: 6px;
+    /* Distance depuis le haut */
+    left: 8px;
+    /* Distance depuis la gauche */
+
     /* On retire le transform qui servait au centrage */
-    transform: none; 
+    transform: none;
 
     font-size: 10px;
     letter-spacing: 1px;
     font-weight: bold;
-    
+
     color: #9aa0a5;
     text-shadow:
         0 1px 0 #000,
@@ -973,27 +1035,30 @@ body {
 
 /* Effet au survol ou quand le bouton est actif */
 .default-tone-btn:hover {
-    color: var(--text-white); 
+    color: var(--text-white);
     text-shadow: 0 0 5px var(--vfd-glow);
 }
 
 
 
 .btn i {
-    font-size: 14px; /* Taille des symboles */
-    color: var(--text-silver); /* Utilise ta couleur argentée */
-    pointer-events: none; /* Évite que l'icône bloque le clic du bouton */
+    font-size: 14px;
+    /* Taille des symboles */
+    color: var(--text-silver);
+    /* Utilise ta couleur argentée */
+    pointer-events: none;
+    /* Évite que l'icône bloque le clic du bouton */
 }
 
 /* Effet au survol ou quand le bouton est actif */
 .btn:hover i {
-    color: var(--text-white); 
+    color: var(--text-white);
     text-shadow: 0 0 5px var(--vfd-glow);
 }
 
 /* Effet au survol ou quand le bouton est actif */
 .btn:hover {
-    color: var(--text-white); 
+    color: var(--text-white);
     text-shadow: 0 0 5px var(--vfd-glow);
 }
 
@@ -1010,8 +1075,10 @@ body {
 
 
 .volume-label {
-    grid-column: 1 / -1;  /* Occupe les 3 colonnes */
-    grid-row: 1;  /* Première ligne */
+    grid-column: 1 / -1;
+    /* Occupe les 3 colonnes */
+    grid-row: 1;
+    /* Première ligne */
     text-align: center;
     font-size: 10px;
     color: var(--text-silver);
@@ -1058,7 +1125,3 @@ body {
     text-shadow: 0 0 15px var(--vfd-blue-dim);
     margin-right: 5px;
 }
-
-
-
-
