@@ -938,6 +938,30 @@ body {
 }
 
 
+.hatch-open-label {
+    position: absolute;
+    /* On fixe la position dans le coin haut gauche */
+    top: 6px;   /* Distance depuis le haut */
+    left: 8px;  /* Distance depuis la gauche */
+    
+    /* On retire le transform qui servait au centrage */
+    transform: none; 
+
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    
+    color: #9aa0a5;
+    text-shadow:
+        0 1px 0 #000,
+        0 0 4px rgba(120, 160, 180, 0.25);
+
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.9;
+}
+
+
 
 #default-tone-btn {
     width: 60px;
