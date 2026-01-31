@@ -255,5 +255,5 @@ This project is provided as-is for educational and personal use. Technics is a t
 For issues, suggestions, or contributions, please contact the author or submit feedback through the application interface.
 
 -----
-
+<img width="1890" height="823" alt="3" src="https://github.com/user-attachments/assets/012a7bee-673b-4478-8884-014163dd3c6b" />
 **Enjoy your music with vintage style and modern fidelity! 🎵**
